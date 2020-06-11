@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Intro</title>
+  <!-- put this in the head if you need to load static files -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <h1>Hello {{ first_name }}!</h1>
+  <h2>Users</h2>
+  <ul>
+    {% for user in users %}
+    <li>{{ user }}</li>
+    {% endfor %}
+  </ul>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ad et natus sed doloribus saepe molestias mollitia temporibus commodi maxime nisi qui, fugiat nobis adipisci reiciendis, incidunt voluptatibus neque vel.</p>
+</body>
+</html>

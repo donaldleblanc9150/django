@@ -1,0 +1,117 @@
+(djangoPy3Env) iMac-for-Don:books_authors_proj donaldleblanc$ python manage.py makemigrations
+Did you rename author.name to author.first_name (a CharField)? [y/N] y
+You are trying to add a non-nullable field 'last_name' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "null"
+You are trying to add a non-nullable field 'desc' to books without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "null"
+Migrations for 'books_authors_app':
+  books_authors_app/migrations/0002_auto_20200609_0247.py
+    - Rename field name on author to first_name
+    - Add field last_name to author
+    - Add field desc to books
+(djangoPy3Env) iMac-for-Don:books_authors_proj donaldleblanc$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors_app, contenttypes, sessions
+Running migrations:
+  Applying books_authors_app.0002_auto_20200609_0247... OK
+(djangoPy3Env) iMac-for-Don:books_authors_proj donaldleblanc$ python manage.py shell
+Python 3.7.7 (default, May  4 2020, 10:42:44) 
+[Clang 8.0.0 (clang-800.0.42.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from books_authors_app.models import *
+>>> >>> from books_authors_app.models import *
+>>> from books_authors_app.models import *
+>>> Books.objects.create(title="C Sharp", desc="A book about C++ programming language")
+<Books: Books object (1)>
+>>> Books.objects.create(title="Java", desc="A book about the Java programming language")
+<Books: Books object (2)>
+>>> Books.objects.create(title="Python", desc="A book about the Python programming language")
+<Books: Books object (3)>
+>>> Books.objects.create(title="PHP", desc="A book about the PHP programming language")
+<Books: Books object (4)>
+>>> Books.objects.create(title="Ruby", desc="A book about the Ruby programming language")
+<Books: Books object (5)>
+>>> 
+>>> Authors.objects.create(first_name="Jane", last_name="Austen")
+<Authors: Authors object (1)>
+>>> Authors.objects.create(first_name="Emily", last_name="Dickinson")
+<Authors: Authors object (2)>
+>>> Authors.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+<Authors: Authors object (3)>
+>>> Authors.objects.create(first_name="William", last_name="Shakespeare")
+<Authors: Authors object (4)>
+>>> Authors.objects.create(first_name="Lau", last_name="Tzu")
+<Authors: Authors object (5)>
+>>> from books_authors_app.models import *
+>>> c=Books.objects.get(id=1)
+>>> c.title="C#"
+>>> c.save()
+>>> 
+>>> c=Authors.objects.get(id=4)
+>>> c.first_name="Bill"
+>>> c.save()
+>>> >>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=2)
+>>> this_author= Authors.objects.get(id=1)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=1)
+>>> this_author = Authors.objects.get(id=2)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=2)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=3)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=1)
+>>> this_author = Authors.objects.get(id=3)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=2)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=3)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=4)
+>>> this_author.books.add(this_book)
+>>>>>> this_book = Books.objects.get(id=1)
+>>> this_author = Authors.objects.get(id=4)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=2)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=3)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=4)
+>>> this_author.books.add(this_book)
+>>> this_book = Books.objects.get(id=5)
+>>> this_author.books.add(this_book)
+>>> 
+>>> this_book = Books.objects.get(id=3)
+>>> this_book.authors.all()
+<QuerySet [<Authors: Authors object (2)>, <Authors: Authors object (3)>, <Authors: Authors object (4)>]>
+>
+>>> this_book = Books.objects.get(id=3)
+>>> this_author = Authors.objects.get(id=2)
+>>> this_book.authors.remove(this_author)
+>>> 
+>>> this_book = Books.objects.get(id=2)
+>>> this_author = Authors.objects.get(id=5)
+>>> this_author.books.add(this_book)
+>>> 
+>>> this_author.books.all()
+<QuerySet [<Books: Books object (1)>, <Books: Books object (2)>, <Books: Books object (3)>, <Books: Books object (4)>]>
+>>> >>> this_book = Books.objects.get(id=5)
+>>> this_book.authors.all()
+<QuerySet [<Authors: Authors object (4)>]>
+>>> 

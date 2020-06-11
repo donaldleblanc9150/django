@@ -1,0 +1,38 @@
+(djangoPy3Env) iMac-for-Don:single_model_orm donaldleblanc$ python manage.py makemigrations
+Migrations for 'users_app':
+  users_app/migrations/0001_initial.py
+    - Create model Users
+(djangoPy3Env) iMac-for-Don:single_model_orm donaldleblanc$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users_app
+Running migrations:
+  Applying users_app.0001_initial... OK
+(djangoPy3Env) iMac-for-Don:single_model_orm donaldleblanc$ python manage.py shell
+Python 3.7.7 (default, May  4 2020, 10:42:44) 
+[Clang 8.0.0 (clang-800.0.42.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from users_app.models import Users
+>>> >>> from users_app.models import Users
+>>> Users.objects.create(first_name="Robert", last_name="Madison", email_address="bobbie@email.com", age="24")
+<Users: Users object (1)>
+>>> Users.objects.create(first_name="Carey", last_name="Zukus", email_address="scareycarey@email.com", age="21")
+<Users: Users object (2)>
+>>> Users.objects.create(first_name="Mindy", last_name="Calumn", email_address="mindy@email.com", age="33")
+<Users: Users object (3)>
+>>> >>> Users.objects.all()
+<QuerySet [<Users: Users object (1)>, <Users: Users object (2)>, <Users: Users object (3)>]>
+>>> >>> Users.objects.last()
+<Users: Users object (3)>
+>>> >>> Users.objects.first()
+<Users: Users object (1)>
+>>> >>> c = Users.objects.get(id=3)
+>>> c.last_name = "Pancakes"
+>>> c.save()
+>>> >>> c = Users.objects.get(id=2)
+>>> c.delete()
+(1, {'users_app.Users': 1})
+>>> >>> Users.objects.all().order_by("first_name")
+<QuerySet [<Users: Users object (3)>, <Users: Users object (1)>]>
+>>> 
+

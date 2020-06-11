@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      {% load static %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'randomword_app/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+  <body>
+    <div class="random_box">
+      <h4>Random Word (attempt#{{ request.session.count }})</h1>
+      <p>{{ request.session.random }}</p>
+      <form name="count" action="/random_word/generate">
+        {% csrf_token %}
+        <input type="submit" value="Generate">
+      </form>
+
+      <form name="reset" action="/reset" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Reset">
+        </form>
+      </div>
+  </body>
+</html>

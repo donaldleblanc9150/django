@@ -1,0 +1,31 @@
+(djangoPy3Env) iMac-for-Don:dojo_ninja_proj donaldleblanc$ python manage.py shell
+Python 3.7.7 (default, May  4 2020, 10:42:44) 
+[Clang 8.0.0 (clang-800.0.42.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninjas_app.models import *
+>>> >>> Dojos.objects.create(name="Dojo Malibu", city="Malibu", state="CA")
+<Dojos: Dojos object (1)>
+>>> Dojos.objects.create(name="Dojo Austin", city="Austin", state="TX")
+<Dojos: Dojos object (2)>
+>>> Dojos.objects.create(name="Dojo Chicago", city="Chicago", state="IL")
+<Dojos: Dojos object (3)>
+>>> c=Dojos.objects.get(id=1)
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninjas': 0, 'dojo_ninjas_app.Dojos': 1})
+>>> c=Dojos.objects.get(id=2)
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninjas': 0, 'dojo_ninjas_app.Dojos': 1})
+>>> c=Dojos.objects.get(id=3)
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninjas': 0, 'dojo_ninjas_app.Dojos': 1})
+>>> >>> Ninjas.objects.filter(dojo="4")
+<QuerySet [<Ninjas: Ninjas object (1)>, <Ninjas: Ninjas object (2)>, <Ninjas: Ninjas object (3)>]>
+>>> <QuerySet [<Ninjas: Ninjas object (7)>, <Ninjas: Ninjas object (8)>, <Ninjas: Ninjas object (9)>]>
+>>>>>> Ninjas.objects.get(id=9).dojo.name
+'Dojo Watertown'
+>>> >>> from dojo_ninjas_app.models import *
+>>> Dojos.objects.create(name="Dojo Tacoma", city="Tacoma", state="WA", desc="A fun place to learn")
+<Dojos: Dojos object (7)>
+>>>
+

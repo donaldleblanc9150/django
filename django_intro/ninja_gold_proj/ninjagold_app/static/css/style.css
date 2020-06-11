@@ -1,0 +1,52 @@
+* {
+    /* outline: 1px solid pink; */
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    padding: 10px;
+    width: auto;
+    height: 800px;
+    display: block;
+}
+
+.flex-container {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    background-color: rgb(14, 85, 156);
+}
+
+.flex-container p {
+    font-size: 11px;
+}
+
+.flex-container>div {
+    background-color: #bad9df;
+    width: 155px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.boxes form input {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: gold;
+}
+
+.footer {
+    padding: 10px;
+    height: 200px;
+}
+
+div.ex3 {
+    background-color: lightblue;
+    width: 670px;
+    height: 130px;
+    overflow: auto;
+}

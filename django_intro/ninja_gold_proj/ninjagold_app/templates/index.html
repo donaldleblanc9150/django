@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+    p.solid {border-style: solid;}
+    </style>
+    <title>Ninja Money</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="header">
+    <form>
+     {% csrf_token %}
+        <p class="solid">Your Gold:  {{request.session.gold}}</p>
+        {% comment %} <label for="fname"></label> {% endcomment %}
+        
+    </form>
+    </div>
+    <div class="boxes">
+        <div class="flex-container">
+            <div>Farm
+            <p>(earns 10-20 golds)</P>
+            <form action="/process_money" method="POST">
+             {% csrf_token %}
+            <input type="hidden" name="location" value="farm_gold">
+            <input type="submit" value="Find Gold">
+            </form>
+            </div>
+
+            <div>Cave
+            <p>(earns 5-10 golds)</P>
+            <form action="/process_money" method="POST">
+             {% csrf_token %}
+            <input type="hidden" name="location" value="cave_gold">
+            <input type="submit" value="Find Gold">
+            </form>
+            </div>
+
+            <div>House
+            <p>(earns 2-5 golds)</P>
+            <form action="/process_money" method="POST">
+             {% csrf_token %}
+            <input type="hidden" name="location" value="house_gold">
+            <input type="submit" value="Find Gold">
+            </form>
+            </div>
+
+            <div>Casino
+            <p>(earns/takes 0-50 golds)</P>
+            <form action="/process_money" method="POST">
+             {% csrf_token %}
+            <input type="hidden" name="location" value="casino_gold">
+            <input type="submit" value="Find Gold">
+            </form>
+            </div>
+            
+        </div>
+    </div>
+    <div class="footer">
+    <h6>Activities:</h6>
+    {% comment %} {% for string in my_string%} {% endcomment %}
+<div class="ex3">
+    <h6>{{my_string}}</h6>
+    {% comment %} {% endfor %} {% endcomment %}
+</div>
+    </div>
+
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
