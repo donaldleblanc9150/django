@@ -10,25 +10,42 @@
 
     <title>{{view_one_book.title}}</title>
 </head>
-    <body>
-        <div class="container">
-            <div class="left_side">
-                <div class="form-group row">
-                    <h3>{{view_one_book.title}}</h3>
+<body>
+    <div class="container">
+    <a href="/">Go Back</a>
+        <div class="row-12">
+            <div class="col-sm">
+                <h3>{{view_one_book.title}}</h3>
+            </div>
+            <div class="col-sm">
+                <h5>ID:{{view_one_book.id}}</h5>
+            </div>
+            <div class="col-sm">
+                <h5>Description:  </h5>
+                <p>{{view_one_book.desc}}</p>
+            </div>
+            <div class="col-sm">
+                <h5>Authors:</h5>
+                <ul>
+                        {% for author in view_one_book.authors.all %}
+                    <li>{{author.first_name}} {{author.last_name}}</li>
+                        {% endfor %}
+                </ul>
+            </div>
+            <form action="{{view_one_book.id}}/update" method="POST">
+            {% csrf_token %}
+                <div class="form-group-12">
+                    <input type="hidden"name="update" value="{{view_one_book.id}}">                    
+                    <select class="form-control" name="author_id">
+                        {% for author in all_authors %}
+                        <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                        <input type="submit" class="btn btn-primary"></input>
                 </div>
-                <div class="form-group row">
-                    <h5>ID:{{view_one_book.id}}</h5>
-                </div>
-                <div class="form-group row">
-                    <h5>Description:  </h5>
-                    <p>{{view_one_book.desc}}</p>
-                </div>
-                <div class="form-group row">
-                    <h5>Authors:</h5>
-                        <ul>{{authors.first_name}} {{view_one_book.books.authors.last_name}}</ul>
-                </div>
+            </form>
+        </div>
     </div>
-</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
